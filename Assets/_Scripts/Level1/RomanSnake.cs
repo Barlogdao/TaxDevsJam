@@ -64,7 +64,6 @@ public class RomanSnake : MonoBehaviour
 
             if (offset.magnitude > _distance)
             {
-                Debug.Log(offset.magnitude);
                 bone.position = target.position - offset.normalized * _distance;
             }
 
@@ -85,7 +84,7 @@ public class RomanSnake : MonoBehaviour
                     workless.SetTarget(_tail[_followersCount].transform);
                     _followers.Add(workless);
                     _followersCount++;
-                    Debug.Log(_followersCount);
+                    // Debug.Log(_followersCount);
                 }
             }
         }
