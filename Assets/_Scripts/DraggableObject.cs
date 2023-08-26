@@ -11,8 +11,8 @@ public class DraggableObject : MonoBehaviour
     private Camera mainCamera;
     private Plane dragPlane;
 
-    private Vector3 initialPosition; // Initial position before floating
-    private float floatingHeight = 5f; // Floating height
+    private Vector3 initialPosition;
+    private float floatingHeight = 5f; 
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class DraggableObject : MonoBehaviour
                 if (hit.collider != null && hit.collider.CompareTag("Student"))
                 {
                     selectedObject = hit.collider.gameObject;
-                    initialPosition = selectedObject.transform.position; // Store initial position before floating
+                    initialPosition = selectedObject.transform.position;
                     Cursor.visible = false;
                 }
             }

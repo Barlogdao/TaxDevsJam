@@ -7,22 +7,22 @@ public class Timer : MonoBehaviour
     public delegate void TimeOutHandler();
     public event TimeOutHandler TimeOutEvent;
 
-    private float currentTime;
+    private float _currentTime;
 
     private void Start()
     {
-        currentTime = countdownDuration;
+        _currentTime = countdownDuration;
     }
 
     private void Update()
     {
-        if (currentTime > 0)
+        if (_currentTime > 0)
         {
-            currentTime -= Time.deltaTime;
+            _currentTime -= Time.deltaTime;
 
-            if (currentTime <= 0)
+            if (_currentTime <= 0)
             {
-                currentTime = 0;
+                _currentTime = 0;
                 HandleTimeOut();
             }
         }

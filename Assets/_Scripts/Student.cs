@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Student : MonoBehaviour
 {
@@ -12,9 +13,11 @@ public class Student : MonoBehaviour
     
     private StudentState currentState{get; set;}
     private int Hp { get; set; }
-    private int Experience { get; set; }
-    private bool isTorturing = false;
-    private bool isRecreating  = false;
+    public int Experience { get; private set; }
+    
+    public UnityAction<int, int> HealthChanged;
+    public UnityAction<int> ExperienceChanged;
+    
     private TortureSpot currentTortureSpot;
     private RecreationSpot currentRecreationSpot;
     
@@ -23,6 +26,7 @@ public class Student : MonoBehaviour
         Hp = maxHp;
         Experience = 0;
         currentState = StudentState.Normal;
+        HealthChanged?.Invoke(Hp, maxHp);
     }
     
     private void OnTriggerEnter(Collider other)
@@ -54,6 +58,9 @@ public class Student : MonoBehaviour
         {
             Hp -= hpLossRate;
             Experience += experienceGainRate;
+            HealthChanged?.Invoke(Hp, maxHp);
+            ExperienceChanged?.Invoke(Experience);
+            
             if (Hp <= 0)
             {
                 Die();
