@@ -10,7 +10,7 @@ public class Student : MonoBehaviour
     [SerializeField] private int hpGainRate;
     [SerializeField] private int experienceGainRate;
     
-    private StudentState currentState = StudentState.Normal;
+    private StudentState currentState{get; set;}
     private int Hp { get; set; }
     private int Experience { get; set; }
     private bool isTorturing = false;
@@ -22,16 +22,17 @@ public class Student : MonoBehaviour
     {
         Hp = maxHp;
         Experience = 0;
+        currentState = StudentState.Normal;
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("TortureSpot") && currentState != StudentState.Torture)
+        if (other.CompareTag("TortureSpot") && currentState != StudentState.Torture && currentState != StudentState.Dragging)
         {
             currentState = StudentState.Torture;
             StartCoroutine(Torture());
         }
-        else if (other.CompareTag("RecreationSpot") && currentState != StudentState.Recreation)
+        else if (other.CompareTag("RecreationSpot") && currentState != StudentState.Recreation && currentState != StudentState.Dragging)
         {
             currentState = StudentState.Recreation;
             StartCoroutine(Recreation());

@@ -2,5 +2,6 @@ public enum StudentState
 {
     Normal,
     Recreation,
-    Torture
+    Torture,
+    Dragging
 }
