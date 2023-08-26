@@ -128,4 +128,9 @@ public class RomanSnake : MonoBehaviour
     {
         _route.Insert(0, point);
     }
+
+    public int GetFollowersCount()
+    {
+        return _followersCount;
+    }
 }

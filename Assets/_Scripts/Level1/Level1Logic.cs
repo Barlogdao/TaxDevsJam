@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level1Logic : MonoBehaviour
 {
     [SerializeField] private int _studentsForFinish;
     [SerializeField] private TMP_Text _questInfo;
     [SerializeField] private RomanSnake _roman;
+    [SerializeField] private Level1Timer _timer;
+    [SerializeField] private TMP_Text _timerLabel;
+
     [SerializeField] private GameObject _welcomePanel;
     [SerializeField] private GameObject _uiPanel;
     [SerializeField] private GameObject _winPanel;
@@ -17,12 +21,16 @@ public class Level1Logic : MonoBehaviour
     {
         _roman.FollowersChanged += OnFollowersChanged;
         _roman.ReturnedToOffice += OnReturnToOffice;
+        _timer.Elapsed += OnTimerElapsed;
+        _timer.TimeChanged += OnTimerChanged;
     }
 
     private void OnDisable()
     {
         _roman.FollowersChanged -= OnFollowersChanged;
         _roman.ReturnedToOffice -= OnReturnToOffice;
+        _timer.Elapsed -= OnTimerElapsed;
+        _timer.TimeChanged -= OnTimerChanged;
     }
 
     private void Start()
@@ -46,10 +54,21 @@ public class Level1Logic : MonoBehaviour
             Win();
     }
 
+    private void OnTimerElapsed()
+    {
+        Fail();
+    }
+
+    private void OnTimerChanged(float time)
+    {
+        _timerLabel.text = string.Format($"{(int)time}");
+    }
+
     public void StartGame()
     {
         _welcomePanel.SetActive(false);
         _uiPanel.SetActive(true);
+        _timer.StartTimer();
         Time.timeScale = 1.0f;
     }
 
@@ -65,5 +84,11 @@ public class Level1Logic : MonoBehaviour
         Time.timeScale = 0;
         _uiPanel.SetActive(false);
         _failPanel.SetActive(true);
+    }
+
+    public void NextLevel()
+    {
+        PlayerPrefs.SetInt("students", _roman.GetFollowersCount());
+        SceneManager.LoadScene(2);
     }
 }

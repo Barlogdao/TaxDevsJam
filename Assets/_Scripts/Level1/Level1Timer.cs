@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class Level1Timer : MonoBehaviour
 {
-    public UnityEvent Elapsed;
-    public UnityEvent<float> TimeChanged;
+    public UnityAction Elapsed;
+    public UnityAction<float> TimeChanged;
 
     [SerializeField] private float _timeToFinishLevel;
 
@@ -22,9 +22,15 @@ public class Level1Timer : MonoBehaviour
         if (_timerEnabled == false)
             return;
 
+        if(_timeToFinishLevel <= 0)
+        {
+            Elapsed?.Invoke();
+            _timerEnabled = false;
+            return;
+        }
+
         _timeToFinishLevel -= Time.deltaTime;
         TimeChanged?.Invoke(_timeToFinishLevel);
-
     }
 
     public void StartTimer()
