@@ -8,9 +8,11 @@ public class RomanSnake : MonoBehaviour
     public UnityAction<int> FollowersChanged;
     public UnityAction<int> ReturnedToOffice;
 
-    [SerializeField] float _speed;
-    [SerializeField] float _distance;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _distance;
     [SerializeField] private int _maxTailLen;
+    [SerializeField] private Level1Timer _timer;
+    [SerializeField] private Transform _levelEnd;
 
     private int _tailSegments;
     private List<Transform> _tail;
@@ -18,9 +20,21 @@ public class RomanSnake : MonoBehaviour
     private List<Vector2> _route;
     private Vector2 _direction;
     private int _followersCount;
+    private bool _timeIsUp;
+
+    private void OnEnable()
+    {
+        _timer.Elapsed += OnTimerElapced;
+    }
+
+    private void OnDisable()
+    {
+        _timer.Elapsed -= OnTimerElapced;
+    }
 
     void Start()
     {
+        _timeIsUp = false;
         _followersCount = 0;
         _tailSegments = 0;
         _direction = Vector2.down;
@@ -74,11 +88,25 @@ public class RomanSnake : MonoBehaviour
             target = bone;
         }
 
+        if(_timeIsUp)
+        {
+            _direction = _levelEnd.position - transform.position;
+            _direction = _direction.normalized;
+        }
+
         transform.Translate(_direction * Time.deltaTime * _speed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.TryGetComponent<AgavaOffice>(out AgavaOffice agavaOffice))
+        {
+            ReturnedToOffice?.Invoke(_followersCount);
+        }
+
+        if (_timeIsUp)
+            return;
+
         if(collision.TryGetComponent<Workless>(out Workless workless))
         {
             if(_followersCount < _maxTailLen)
@@ -96,11 +124,6 @@ public class RomanSnake : MonoBehaviour
         if(collision.TryGetComponent<DamageArea>(out DamageArea damageArea))
         {
             LoseTail();
-        }
-
-        if(collision.TryGetComponent<AgavaOffice>(out AgavaOffice agavaOffice))
-        {
-            ReturnedToOffice?.Invoke(_followersCount);
         }
     }
 
@@ -132,5 +155,10 @@ public class RomanSnake : MonoBehaviour
     public int GetFollowersCount()
     {
         return _followersCount;
+    }
+
+    private void OnTimerElapced()
+    {
+        _timeIsUp = true;
     }
 }

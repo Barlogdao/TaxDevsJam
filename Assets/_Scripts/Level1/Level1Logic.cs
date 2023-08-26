@@ -17,6 +17,8 @@ public class Level1Logic : MonoBehaviour
     [SerializeField] private GameObject _winPanel;
     [SerializeField] private GameObject _failPanel;
 
+    private bool _isTimerElapced = false;
+
     private void OnEnable()
     {
         _roman.FollowersChanged += OnFollowersChanged;
@@ -50,13 +52,16 @@ public class Level1Logic : MonoBehaviour
 
     private void OnReturnToOffice(int followers)
     {
-        if (followers >= _studentsForFinish)
+        //if (followers >= _studentsForFinish)
+        //    Win();
+        if(_isTimerElapced)
             Win();
     }
 
     private void OnTimerElapsed()
     {
-        Fail();
+        // Fail();
+        _isTimerElapced = true;
     }
 
     private void OnTimerChanged(float time)
