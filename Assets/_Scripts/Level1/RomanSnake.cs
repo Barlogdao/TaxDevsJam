@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RomanSnake : MonoBehaviour
 {
+    public UnityAction<int> FollowersChanged;
+    public UnityAction<int> ReturnedToOffice;
+
     [SerializeField] float _speed;
     [SerializeField] float _distance;
     [SerializeField] private int _maxTailLen;
@@ -19,7 +23,7 @@ public class RomanSnake : MonoBehaviour
     {
         _followersCount = 0;
         _tailSegments = 0;
-        _direction = Vector2.up;
+        _direction = Vector2.down;
         _tail = new List<Transform>();
         _followers = new List<Workless>();
         _route = new List<Vector2>();
@@ -31,7 +35,7 @@ public class RomanSnake : MonoBehaviour
             bone.transform.localScale = defaultBonescale;
             bone.transform.position = Vector2.down * _distance * (i + 1f);
             bone.transform.position = transform.position + bone.transform.position;
-            //bone.GetComponent<MeshRenderer>().enabled = false;
+            bone.GetComponent<MeshRenderer>().enabled = false;
             _tail.Add(bone.transform);
         }
     }
@@ -84,15 +88,19 @@ public class RomanSnake : MonoBehaviour
                     workless.SetTarget(_tail[_followersCount].transform);
                     _followers.Add(workless);
                     _followersCount++;
-                    // Debug.Log(_followersCount);
+                    FollowersChanged?.Invoke(_followersCount);
                 }
             }
         }
 
         if(collision.TryGetComponent<DamageArea>(out DamageArea damageArea))
         {
-            Debug.Log("Lose tail");
             LoseTail();
+        }
+
+        if(collision.TryGetComponent<AgavaOffice>(out AgavaOffice agavaOffice))
+        {
+            ReturnedToOffice?.Invoke(_followersCount);
         }
     }
 
@@ -104,6 +112,7 @@ public class RomanSnake : MonoBehaviour
         _followersCount--;
         _followers[_followersCount].ResetTarget();
         _followers.RemoveAt(_followersCount);
+        FollowersChanged?.Invoke(_followersCount);
     }
 
     private void SetDirection(Vector2 direction)
