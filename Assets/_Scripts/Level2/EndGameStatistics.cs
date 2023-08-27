@@ -1,18 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EndGameStatistics : MonoBehaviour
 {
-    private void Start()
-    {
-        Timer gameTimer = FindObjectOfType<Timer>();
-        if (gameTimer != null)
-        {
-            gameTimer.TimeOutEvent += CalculateEndScore;
-        }
-    }
-    private void CalculateEndScore()
+    public int CalculateEndScore()
     {
         List<Student> students = new List<Student>(FindObjectsOfType<Student>());
 
@@ -29,6 +20,7 @@ public class EndGameStatistics : MonoBehaviour
 
             totalScore += studentScore;
         }
-        Debug.Log("Total Score: " + totalScore);
+
+        return totalScore;
     }
 }

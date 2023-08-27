@@ -1,14 +1,16 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] private float countdownDuration = 60f;
+    [SerializeField] private TextMeshProUGUI _timerText;
     public delegate void TimeOutHandler();
     public event TimeOutHandler TimeOutEvent;
 
     private float _currentTime;
-
+    
     private void Start()
     {
         _currentTime = countdownDuration;
@@ -19,20 +21,18 @@ public class Timer : MonoBehaviour
         if (_currentTime > 0)
         {
             _currentTime -= Time.deltaTime;
-
+            int seconds = Mathf.RoundToInt(_currentTime);
+            _timerText.text = seconds.ToString();
             if (_currentTime <= 0)
             {
                 _currentTime = 0;
-                HandleTimeOut();
+                if (TimeOutEvent != null) TimeOutEvent.Invoke();
             }
         }
     }
 
     private void HandleTimeOut()
     {
-        if (TimeOutEvent != null)
-        {
-            TimeOutEvent();
-        }
+            
     }
 }
