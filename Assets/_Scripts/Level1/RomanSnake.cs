@@ -133,6 +133,7 @@ public class RomanSnake : MonoBehaviour
                     _followers.Add(workless);
                     _followersCount++;
                     FollowersChanged?.Invoke(_followersCount);
+                    SoundBus.StudentTaken?.Invoke();
                 }
             }
         }
@@ -175,6 +176,7 @@ public class RomanSnake : MonoBehaviour
 
     private void OnTimerElapced()
     {
+        SoundBus.TimeEnded?.Invoke();
         _timeIsUp = true;
     }
 }

@@ -40,6 +40,7 @@ public class Level1Logic : MonoBehaviour
 
     private void Start()
     {
+        SoundBus.Level1Started?.Invoke();
         Time.timeScale = 0;
     }
 

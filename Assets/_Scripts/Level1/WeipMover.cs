@@ -42,6 +42,7 @@ public class WeipMover : MonoBehaviour
     {
         if (collision.TryGetComponent<RomanSnake>(out RomanSnake roman))
         {
+            SoundBus.WeipExploded?.Invoke();
             KillWeip();
         }
 
@@ -53,6 +54,7 @@ public class WeipMover : MonoBehaviour
 
     private void KillWeip()
     {
+        if (this == null) return;
         Explode();
         Destroy(gameObject);
     }
