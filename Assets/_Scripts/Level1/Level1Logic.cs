@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,6 +17,8 @@ public class Level1Logic : MonoBehaviour
     [SerializeField] private GameObject _uiPanel;
     [SerializeField] private GameObject _winPanel;
     [SerializeField] private GameObject _failPanel;
+
+    public static event Action GameStarted;
 
     private bool _isTimerElapced = false;
 
@@ -79,6 +82,7 @@ public class Level1Logic : MonoBehaviour
         _uiPanel.SetActive(true);
         _timer.StartTimer();
         Time.timeScale = 1.0f;
+        GameStarted?.Invoke();
     }
 
     private void Win()

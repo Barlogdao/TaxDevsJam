@@ -11,7 +11,14 @@ public class WeipMover : MonoBehaviour
 
     void Start()
     {
-        
+        switch (Random.Range(0, 4))
+        {
+            case 0: _direction =  new Vector3(-1,0,0); break;
+            case 1: _direction = new Vector3(1,0,0); break;
+            case 2: _direction = new Vector3(0,1,0); break;
+            case 3: _direction = new Vector3(0,-1,0); break;
+        }
+
     }
 
     // Update is called once per frame
@@ -25,7 +32,7 @@ public class WeipMover : MonoBehaviour
         if (collision.TryGetComponent<RomanSnake>(out RomanSnake roman))
         {
             Explode();
-            InvertDirecton();
+            Destroy(gameObject);
         }
 
         if (collision.TryGetComponent<Obstacle>(out Obstacle obstacle))
