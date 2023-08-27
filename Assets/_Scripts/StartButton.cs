@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
+    [SerializeField] private int _nextScene;
 
     private void Start()
     {
@@ -15,5 +17,10 @@ public class StartButton : MonoBehaviour
         transperentColor.a = 1f;
 
         _text.DOColor(transperentColor, 1f).SetLoops(100, LoopType.Yoyo);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(_nextScene);
     }
 }

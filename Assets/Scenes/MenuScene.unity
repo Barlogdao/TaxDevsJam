@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 244404448}
+  _nextScene: 2
 --- !u!114 &24785618
 MonoBehaviour:
   m_ObjectHideFlags: 0
