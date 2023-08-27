@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a30ab628c899247b0ceda3176dc189, type: 3}
   m_Name: TakeStident
   m_EditorClassIdentifier: 
-  _clip: {fileID: 0}
+  _clip: {fileID: 8300000, guid: 42f03c73daadbd54e8704ed9b4d7d17b, type: 3}

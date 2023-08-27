@@ -25,7 +25,7 @@ public class AudioProvider : MonoBehaviour
     {
         SoundBus.WeipExploded += OnWeipExploded;
         SoundBus.StudentTaken += OnStudentTaken;
-        SoundBus.StudentTaken += OnTimeEnded;
+        SoundBus.TimeEnded += OnTimeEnded;
         SoundBus.MenuStarted += OnMenuStarted;
         SoundBus.Level1Started += OnLevelOneStarted;
         SoundBus.Level2Started += OnLevelTWOStarted;

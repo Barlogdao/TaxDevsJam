@@ -176,7 +176,7 @@ public class RomanSnake : MonoBehaviour
 
     private void OnTimerElapced()
     {
-        SoundBus.TimeEnded?.Invoke();
+       
         _timeIsUp = true;
     }
 }
