@@ -95,6 +95,10 @@ GameObject:
   - component: {fileID: 9100458184165271068}
   - component: {fileID: 2399207352725981685}
   - component: {fileID: 217508140497933529}
+  - component: {fileID: 392367536}
+  - component: {fileID: 392367538}
+  - component: {fileID: 392367535}
+  - component: {fileID: 392367537}
   m_Layer: 0
   m_Name: Student
   m_TagString: Untagged
@@ -180,7 +184,7 @@ Animator:
   m_GameObject: {fileID: 8333532942977470073}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: -6674779811573845547, guid: 63947b984ff54554f9e329f2c0a5f1d3, type: 3}
+  m_Controller: {fileID: 22100000, guid: 713aba1c4e2e8c244b26304221968271, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -191,3 +195,68 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &392367536
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333532942977470073}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &392367538
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333532942977470073}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.13}
+  serializedVersion: 2
+  m_Radius: 0.28
+--- !u!114 &392367535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333532942977470073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6ebe0bed2397249852e551180cd0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _approachSpeed: 0.05
+  _defaultPosition: {x: 0, y: 0, z: 0}
+  _speed: 3
+--- !u!114 &392367537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333532942977470073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8891e0cabc44ca74aa3a73ce9f78780f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flippedIsLeft: 1
