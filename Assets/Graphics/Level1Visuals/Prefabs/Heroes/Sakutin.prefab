@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 6808553318944693915}
   - component: {fileID: 107021837171044722}
   - component: {fileID: 2536436072357063774}
+  - component: {fileID: 1437886809}
+  - component: {fileID: 1437886810}
+  - component: {fileID: 1437886807}
+  - component: {fileID: 1437886808}
   m_Layer: 0
   m_Name: Sakutin
   m_TagString: Untagged
@@ -96,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 6021644359374927614}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 6537879170739500953, guid: 40981d8a74ae4ee4a874bf95a5a78b84, type: 3}
+  m_Controller: {fileID: 22100000, guid: cfe49bda2fea49546877e149ec372884, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -107,6 +111,73 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &1437886809
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021644359374927614}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &1437886810
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021644359374927614}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.12}
+  serializedVersion: 2
+  m_Radius: 0.26
+--- !u!114 &1437886807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021644359374927614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8891e0cabc44ca74aa3a73ce9f78780f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flippedIsLeft: 1
+--- !u!114 &1437886808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021644359374927614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4c0baf1bda98640a0807422cfb8e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
+  _distance: 0.9
+  _maxTailLen: 10
+  _timer: {fileID: 0}
+  _levelEnd: {fileID: 0}
 --- !u!1 &9172213972989520286
 GameObject:
   m_ObjectHideFlags: 0
