@@ -1,0 +1,30 @@
+# Blender MTL File: 'None'
+# Material Count: 2
+
+newmtl texture_NONE
+Ns 94.117647
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd textures\colorid1.png
+map_Bump textures\\DefaultMaterial_Normal_DirectX.png
+map_Ka textures\\DefaultMaterial_Mixed_AO.png
+map_d textures\\DefaultMaterial_Opacity.png
+
+newmtl texture_NONE_DefaultMaterial_Base_Color.png
+Ns 94.117647
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd textures\DefaultMaterial_Base_Color.png
+map_Bump textures\\DefaultMaterial_Normal_DirectX.png
+map_Ka textures\\DefaultMaterial_Mixed_AO.png
+map_d textures\\DefaultMaterial_Opacity.png
