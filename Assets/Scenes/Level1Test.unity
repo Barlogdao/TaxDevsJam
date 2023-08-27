@@ -484,10 +484,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 156201140967157573, guid: ae69f0b1bbb2aa54090605bd600079c3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 156201141055997290, guid: ae69f0b1bbb2aa54090605bd600079c3, type: 3}
       propertyPath: _roman
       value: 
@@ -579,27 +575,6 @@ PrefabInstance:
     - target: {fileID: 156201141055997294, guid: ae69f0b1bbb2aa54090605bd600079c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 156201141067219804, guid: ae69f0b1bbb2aa54090605bd600079c3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 156201141067219807, guid: ae69f0b1bbb2aa54090605bd600079c3, type: 3}
-      propertyPath: _timeToFinishLevel
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 156201141422491504, guid: ae69f0b1bbb2aa54090605bd600079c3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 156201141422491506, guid: ae69f0b1bbb2aa54090605bd600079c3, type: 3}
-      propertyPath: m_text
-      value: "\u0422\u0435\u043F\u0435\u0440\u044C \u043F\u0435\u0440\u0435\u0445\u043E\u0434\u0438\u043C
-        \u043A \u0440\u0430\u0431\u043E\u0442\u0435 \u0441 \u043C\u0435\u043D\u0442\u043E\u0440\u0430\u043C\u0438!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 156201141422491507, guid: ae69f0b1bbb2aa54090605bd600079c3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae69f0b1bbb2aa54090605bd600079c3, type: 3}
