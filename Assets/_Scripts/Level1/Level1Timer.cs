@@ -26,6 +26,8 @@ public class Level1Timer : MonoBehaviour
         {
             Elapsed?.Invoke();
             _timerEnabled = false;
+            SoundBus.TimeEnded?.Invoke();
+            Debug.Log(1);
             return;
         }
 

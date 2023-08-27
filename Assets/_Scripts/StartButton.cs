@@ -17,6 +17,8 @@ public class StartButton : MonoBehaviour
         transperentColor.a = 1f;
 
         _text.DOColor(transperentColor, 1f).SetLoops(100, LoopType.Yoyo);
+
+        SoundBus.MenuStarted?.Invoke();
     }
 
     public void StartGame()
