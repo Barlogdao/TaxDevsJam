@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EndGameStatistics : MonoBehaviour
 {
+    public int Collectibles { get; set; }
     public int CalculateEndScore()
     {
         List<Student> students = new List<Student>(FindObjectsOfType<Student>());
@@ -17,8 +18,8 @@ public class EndGameStatistics : MonoBehaviour
             {
                 studentScore *= 2;
             }
-
-            totalScore += studentScore;
+            
+            totalScore += studentScore + Collectibles;
         }
 
         return totalScore;
