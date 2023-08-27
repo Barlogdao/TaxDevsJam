@@ -36,7 +36,7 @@ public class WeipSpawner : MonoBehaviour
     {
         while (true)
         {
-            Instantiate(_prefab, _points[UnityEngine.Random.Range(0, _points.Length - 1)].position, Quaternion.identity);
+            Instantiate(_prefab, _points[UnityEngine.Random.Range(0, _points.Length - 1)].position, Quaternion.identity).Init(_timer);
             yield return new WaitForSeconds(_interval);
         }
     }

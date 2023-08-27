@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class RomanSnake : MonoBehaviour
 {
+
+    private readonly int IDLEA = Animator.StringToHash("MonkeyIdle");
+    private readonly int RUANA = Animator.StringToHash("MonkeyRun");
     public UnityAction<int> FollowersChanged;
     public UnityAction<int> ReturnedToOffice;
 
@@ -21,19 +26,30 @@ public class RomanSnake : MonoBehaviour
     private Vector2 _direction;
     private int _followersCount;
     private bool _timeIsUp;
+    [SerializeField] Animator _animator;
 
     private void OnEnable()
     {
         _timer.Elapsed += OnTimerElapced;
+        Level1Logic.GameStarted += OnGameStarted;
+    }
+
+    private void OnGameStarted()
+    {
+        _animator.SetBool("Run", true);
+
+        Debug.Log("RUN");
     }
 
     private void OnDisable()
     {
         _timer.Elapsed -= OnTimerElapced;
+        Level1Logic.GameStarted -= OnGameStarted;
     }
 
     void Start()
     {
+        _animator.Play(IDLEA);
         _timeIsUp = false;
         _followersCount = 0;
         _tailSegments = 0;

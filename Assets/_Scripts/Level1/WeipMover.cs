@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeipMover : MonoBehaviour
@@ -21,6 +19,19 @@ public class WeipMover : MonoBehaviour
 
     }
 
+    public void Init(Level1Timer _timer)
+    {
+        _timer.Elapsed += OnGameOver;
+         void OnGameOver()
+        {
+            _timer.Elapsed -= OnGameOver;
+
+            KillWeip();
+        }
+    }
+
+    
+
     // Update is called once per frame
     void Update()
     {
@@ -31,8 +42,7 @@ public class WeipMover : MonoBehaviour
     {
         if (collision.TryGetComponent<RomanSnake>(out RomanSnake roman))
         {
-            Explode();
-            Destroy(gameObject);
+            KillWeip();
         }
 
         if (collision.TryGetComponent<Obstacle>(out Obstacle obstacle))
@@ -41,12 +51,18 @@ public class WeipMover : MonoBehaviour
         }
     }
 
+    private void KillWeip()
+    {
+        Explode();
+        Destroy(gameObject);
+    }
+
     private void Explode()
     {
-        GameObject vfx = Instantiate(_vfx, transform);
-        vfx.transform.position = Vector3.zero;
-        vfx.transform.parent = null;
-        vfx.transform.position = transform.position;
+        GameObject vfx = Instantiate(_vfx, transform.position,Quaternion.identity);
+        //vfx.transform.position = Vector3.zero;
+        //vfx.transform.parent = null;
+        //vfx.transform.position = transform.position;
     }
 
     private void InvertDirecton()
