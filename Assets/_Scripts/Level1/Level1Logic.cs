@@ -42,12 +42,16 @@ public class Level1Logic : MonoBehaviour
 
     public void OnFollowersChanged(int followers)
     {
+#if false
         int studentsToFind = _studentsForFinish - followers;
 
         if (studentsToFind > 0)
             _questInfo.text = string.Format($"Осталось найти учеников: {studentsToFind}");
         else
             _questInfo.text = string.Format($"Веди учеников в офис");
+#endif
+
+        _questInfo.text = string.Format($"Ты нашёл учеников: {followers}");
     }
 
     private void OnReturnToOffice(int followers)
