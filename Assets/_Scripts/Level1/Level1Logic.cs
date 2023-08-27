@@ -51,7 +51,7 @@ public class Level1Logic : MonoBehaviour
             _questInfo.text = string.Format($"Веди учеников в офис");
 #endif
 
-        _questInfo.text = string.Format($"Ты нашёл учеников: {followers}");
+        _questInfo.text = string.Format($"{followers}");
     }
 
     private void OnReturnToOffice(int followers)
