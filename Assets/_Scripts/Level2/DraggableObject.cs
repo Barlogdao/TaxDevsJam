@@ -5,6 +5,7 @@ using UnityEngine;
 public class DraggableObject : MonoBehaviour
 {
     private GameObject selectedObject;
+    [SerializeField] private Animator _animator;
     private bool isRotating = false;
     private bool isFloating = false;
 
@@ -33,12 +34,17 @@ public class DraggableObject : MonoBehaviour
                     selectedObject = hit.collider.gameObject;
                     initialPosition = selectedObject.transform.position;
                     Cursor.visible = false;
+                    if (selectedObject == this.gameObject)
+                    {
+                        _animator.SetBool("IsFly", true);
+                    }
                 }
             }
             else
             {
                 TeleportSelectedObject();
                 Cursor.visible = true;
+                _animator.SetBool("IsFly", false);
             }
         }
 
