@@ -7,7 +7,7 @@ namespace DTJ.Visual
     {
         private void Start()
         {
-            transform.DOScale(1.3f,1f).SetEase(Ease.OutSine).SetLoops(-1,LoopType.Yoyo);
+            transform.DOScale(1.3f,1f).SetEase(Ease.OutSine).SetLoops(-1,LoopType.Yoyo).SetUpdate(true);
         }
     }
 }

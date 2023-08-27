@@ -9,7 +9,7 @@ public class StudentSpawner : MonoBehaviour
 
     private void Start()
     {
-        int score = 10; 
+        int score = 3; 
         SpawnStudents(score);
     }
     private void SpawnStudents(int count)

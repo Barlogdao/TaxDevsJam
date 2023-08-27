@@ -12,6 +12,7 @@ public class Student : MonoBehaviour
     [SerializeField] private int experienceGainRate;
     
     private StudentState currentState{get; set;}
+    [SerializeField] private bool isTesting;
     private int Hp { get; set; }
     public int Experience { get; private set; }
     
@@ -25,7 +26,15 @@ public class Student : MonoBehaviour
     {
         Hp = maxHp;
         Experience = 0;
-        currentState = StudentState.Normal;
+        if (!isTesting)
+        {
+            currentState = StudentState.Normal;
+        }
+        else
+        {
+            currentState = StudentState.Torture;
+            StartCoroutine(Torture());
+        }
         HealthChanged?.Invoke(Hp, maxHp);
     }
     
